@@ -1,38 +1,28 @@
-
-
-import { Component, OnInit } from '@angular/core';
-import { UserService } from './../../services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from "../../services/user.service";
 import {IUser} from "../../interfaces";
-import {FormsModule} from "@angular/forms";
-import {NgForOf} from "@angular/common";
 import {UserComponent} from "../user/user.component";
-import {UserPostsComponent} from "../user-posts/user-posts.component";
-import {IPost} from "../../interfaces/post.interface";
-
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-users',
-  standalone:true,
+  standalone: true,
   imports: [
-    FormsModule,
-    NgForOf,
     UserComponent,
-    UserPostsComponent
+    NgForOf
   ],
-  styleUrls: ['./users.component.css'],
   templateUrl: './users.component.html',
+  styleUrl: './users.component.css'
 })
-export class UsersComponent implements OnInit {
-    users: IUser[]
-    userPosts:IPost[]
-
-  constructor(private userService: UserService) {}
-
-  ngOnInit(): void {
-      this.userService.getAll().subscribe(value => this.users =value)
+export class UsersComponent implements OnInit{
+  users:IUser[];
+  constructor(private UserService:UserService) {
   }
 
-  getUsersPost(id:number) {
-    this.userService.getPosts(id).subscribe(value => this.userPosts = value)
+
+
+  ngOnInit():void {
+   this.UserService.getAll().subscribe(value => this.users = value)
   }
 }
+
