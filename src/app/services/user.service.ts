@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { IUser } from '../interfaces';
 import { Observable } from 'rxjs';
 import { urls } from '../constants/urls';
-import {IPost} from "../interfaces/post.interface";
+
 
 
 
@@ -18,8 +18,8 @@ export class UserService {
     return this.httpClient.get<IUser[]>(urls.users.base);
   }
 
-  getPosts(id:number):Observable<IPost[]>{
-    return this.httpClient.get<IPost[]>(urls.users.userPosts(id))
+  getById(id: number): Observable<IUser> {
+    return this.httpClient.get<IUser>(urls.users.byId(id))
   }
 
 }
