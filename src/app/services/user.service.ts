@@ -15,7 +15,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<IUser[]> {
-    return this.httpClient.get<IUser[]>(urls.users.users);
+    return this.httpClient.get<IUser[]>(urls.users.base);
   }
 
   getPosts(id:number):Observable<IPost[]>{
